@@ -10,6 +10,18 @@ public class CommandListener{
 
     final static String KEY = "->";
 
+    static IDiscordClient client;
+
+    CommandListener(IDiscordClient client)
+    {
+        client = client;
+        client.getDispatcher().registerListener(this);
+    }
+
+    private IDiscordClient getClient() {
+        return client;
+    }
+
     @EventSubscriber
     public void watchForCommands(MessageReceivedEvent event) {
         try {
@@ -31,7 +43,8 @@ public class CommandListener{
             }
 
             CommandExecutionEvent _event = new CommandExecutionEvent(message, command, message.getAuthor(), args);
-            getClient.getDispatcher().dispatch(_event);
-        } catch (Exception ignore) {}
+            getClient().getDispatcher().dispatch(_event);
+        } catch (Exception ignore) {
+        }
     }
 }
