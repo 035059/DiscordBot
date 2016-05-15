@@ -6,7 +6,7 @@ import sx.blah.discord.handle.obj.IUser;
  * Created by Allin on 5/12/2016.
  */
 
-class CommandExecutionEvent extends Event {
+public class CommandExecutionEvent extends Event {
 
     private final IMessage message;
     private final String command;

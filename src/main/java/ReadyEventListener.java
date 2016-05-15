@@ -9,6 +9,6 @@ public class ReadyEventListener implements IListener<ReadyEvent>
     public void handle(ReadyEvent event)
     {
         System.out.println("ReadyEventListener is now ready");
-        //doSomething();
+        //runCommand();
     }
 }

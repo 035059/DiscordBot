@@ -25,4 +25,16 @@ public class Music {
 
         channel.queueFile(rawFile);
     }
+
+    public void pause(){
+
+    }
+
+    public void resume(){
+
+    }
+
+    public void stop(){
+
+    }
 }
