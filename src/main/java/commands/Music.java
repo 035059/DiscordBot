@@ -1,4 +1,4 @@
-package commands;
+package main.java.commands;
 
 import sx.blah.discord.api.IDiscordClient;
 import sx.blah.discord.handle.AudioChannel;
@@ -9,7 +9,7 @@ import java.io.File;
 /**
  * Created by Allin on 5/11/2016.
  */
-public class Music {
+public final class Music {
 
     public void playFile(IDiscordClient client, String channelID, String path) throws Exception {
 

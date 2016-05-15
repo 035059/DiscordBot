@@ -1,3 +1,5 @@
+package main.java;
+
 import commands.Commands;
 import commands.Message;
 import sx.blah.discord.api.EventSubscriber;

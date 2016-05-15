@@ -1,3 +1,5 @@
+package main.java;
+
 import sx.blah.discord.api.IListener;
 import sx.blah.discord.handle.impl.events.ReadyEvent;
 
@@ -8,7 +10,7 @@ public class ReadyEventListener implements IListener<ReadyEvent>
 {
     public void handle(ReadyEvent event)
     {
-        System.out.println("ReadyEventListener is now ready");
+        System.out.println("main.java.ReadyEventListener is now ready");
         //runCommand();
     }
 }

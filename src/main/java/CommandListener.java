@@ -1,3 +1,5 @@
+package main.java;
+
 import sx.blah.discord.api.EventSubscriber;
 import sx.blah.discord.api.IDiscordClient;
 import sx.blah.discord.handle.impl.events.MessageReceivedEvent;

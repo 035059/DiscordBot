@@ -1,11 +1,11 @@
-package commands;
+package main.java.commands;
 
 import java.util.Optional;
 
 /**
  * Created by Allin on 5/11/2016.
  */
-public class Filter {
+public final class Filter {
     private Boolean enabled;
 
     Filter(Boolean enabled, Optional<String> dict){

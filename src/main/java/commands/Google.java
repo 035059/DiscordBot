@@ -1,9 +1,9 @@
-package commands;
+package main.java.commands;
 
 /**
  * Created by Allin on 5/11/2016.
  */
-public class Google {
+public final class Google {
     public static void search(String query){
 
     }

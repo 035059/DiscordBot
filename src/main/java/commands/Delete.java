@@ -1,15 +1,17 @@
-package commands;
+package main.java.commands;
+
+import sx.blah.discord.handle.obj.IUser;
 
 /**
  * Created by Allin on 5/11/2016.
  */
-public class Delete {
+public final class Delete {
 
     Delete(int numMessages){
 
     }
 
-    Delete(String user){
+    Delete(IUser user){
 
     }
 

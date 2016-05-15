@@ -1,4 +1,4 @@
-package commands;
+package main.java.commands;
 
 import sx.blah.discord.api.IDiscordClient;
 import sx.blah.discord.handle.obj.IChannel;
@@ -9,7 +9,7 @@ import sx.blah.discord.util.MissingPermissionsException;
 /**
  * Created by Allin on 5/12/2016.
  */
-public class Message {
+public final class Message {
 
     public static void send(IDiscordClient client, IChannel channel, String message){
         try {

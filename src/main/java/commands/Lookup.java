@@ -1,4 +1,4 @@
-package commands;
+package main.java.commands;
 
 import sx.blah.discord.api.IDiscordClient;
 import sx.blah.discord.handle.obj.IChannel;
@@ -9,7 +9,7 @@ import java.util.Optional;
 /**
  * Created by Allin on 5/11/2016.
  */
-public class Lookup {
+public final class Lookup {
 
     public static void findMessage(IDiscordClient client, IChannel channel, String contents){
 

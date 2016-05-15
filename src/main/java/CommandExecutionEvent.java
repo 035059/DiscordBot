@@ -1,3 +1,5 @@
+package main.java;
+
 import sx.blah.discord.api.Event;
 import sx.blah.discord.handle.obj.IMessage;
 import sx.blah.discord.handle.obj.IUser;
@@ -13,7 +15,7 @@ public class CommandExecutionEvent extends Event {
     private final IUser by;
     private final String[] args;
 
-    CommandExecutionEvent(IMessage message, String command, IUser by, String[] args) {
+    public CommandExecutionEvent(IMessage message, String command, IUser by, String[] args) {
         this.message = message;
         this.command = command;
         this.by = by;

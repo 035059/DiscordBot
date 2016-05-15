@@ -1,3 +1,5 @@
+package main.java;
+
 import commands.Message;
 import sx.blah.discord.api.EventSubscriber;
 import sx.blah.discord.handle.impl.events.MessageReceivedEvent;
@@ -19,7 +21,7 @@ class EventHandler
 
     @EventSubscriber
     public void onReadyEvent(ReadyEvent event) {
-        System.out.println("EventHandler is now ready");
+        System.out.println("main.EventHandler is now ready");
     }
 
     @EventSubscriber
