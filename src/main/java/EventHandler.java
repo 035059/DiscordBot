@@ -1,6 +1,5 @@
 package main.java;
 
-import commands.Message;
 import sx.blah.discord.api.EventSubscriber;
 import sx.blah.discord.handle.impl.events.MessageReceivedEvent;
 import sx.blah.discord.handle.impl.events.ReadyEvent;
@@ -8,7 +7,6 @@ import sx.blah.discord.handle.impl.events.ReadyEvent;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Optional;
 
 /**
  * Created by Allin on 5/11/2016.

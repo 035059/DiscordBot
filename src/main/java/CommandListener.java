@@ -16,7 +16,7 @@ public class CommandListener{
 
     CommandListener(IDiscordClient client)
     {
-        client = client;
+        CommandListener.client = client;
         client.getDispatcher().registerListener(this);
     }
 

@@ -1,7 +1,7 @@
 package main.java;
 
-import commands.Commands;
-import commands.Message;
+import main.java.commands.Commands;
+import main.java.commands.Message;
 import sx.blah.discord.api.EventSubscriber;
 
 /**
@@ -12,7 +12,7 @@ public class CommandHandler {
     @EventSubscriber
     public void onCommandEvent(CommandExecutionEvent event) {
         try {
-            Commands.valueOf(event.getCommand()).runCommand();
+            Commands.valueOf(event.getCommand()).runCommand(event.getArgs(), event);
         } catch (IllegalArgumentException ex) {
             ////TODO Send message to qwerier "incorrect message"
             Message.send(event.getClient(), event.getMessage().getChannel(), "@"+event.getBy().getName() + " " + event.getMessage().getContent() + "is not a command");
