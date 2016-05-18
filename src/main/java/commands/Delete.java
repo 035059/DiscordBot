@@ -7,12 +7,14 @@ import sx.blah.discord.handle.obj.IUser;
  */
 public final class Delete {
 
-    Delete(int numMessages){
-
+    private Delete(){};
+    
+    public static void run(){
+        
     }
-
-    Delete(IUser user){
-
+    
+    public static void run(){
+        
     }
 
 }
