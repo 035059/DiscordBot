@@ -49,8 +49,7 @@
 
     <properties>
         <slf4jVersion>1.7.5</slf4jVersion>
-        <Discord4jVersion>2.4.7</Discord4jVersion>
+        <Discord4jVersion>2.4.6</Discord4jVersion>
     </properties>
-
 
 </project>
