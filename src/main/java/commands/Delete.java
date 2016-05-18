@@ -9,11 +9,11 @@ public final class Delete {
 
     private Delete(){};
     
-    public static void run(){
+    public static void run(in numMessages){
         
     }
     
-    public static void run(){
+    public static void run(IUser user){
         
     }
 
