@@ -11,11 +11,13 @@ public class CommandHandler {
 
     @EventSubscriber
     public void onCommandEvent(CommandExecutionEvent event) {
+        System.out.println("Command Caught: " + event.getCommand());
         try {
+            System.out.println("Command: " + event.getCommand());
             Commands.valueOf(event.getCommand()).runCommand(event.getArgs(), event);
+            System.out.println("Command executed");
         } catch (IllegalArgumentException ex) {
-            ////TODO Send message to qwerier "incorrect message"
-            Message.send(event.getClient(), event.getMessage().getChannel(), "@"+event.getBy().getName() + " " + event.getMessage().getContent() + "is not a command");
+            Message.run(event.getClient(), event.getMessage().getChannel(), "@"+event.getBy().getName() + " " + event.getMessage().getContent() + " is not a command");
         }
     }
 }

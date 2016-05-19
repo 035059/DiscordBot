@@ -36,17 +36,32 @@ public class CommandListener{
             }
 
             String command = content.toLowerCase();
+            System.out.println(command); //TEST
             String[] args = null;
 
             if (content.contains(" ")) {
-                command = command.split(" ")[0];
-                args = content.substring(content.indexOf(' ') + 1).split(" ");
+                command = command.trim().split(" ")[1];
+            } else {
+                command = command.trim().split(" ")[0].substring(2);
+            }
 
+            try {
+                args = content.substring(content.indexOf(' ') + 1).split(" ");
+            } catch (NullPointerException ignore){}
+
+            if (args != null) {
+                for (String arg : args){
+                    System.out.println(arg);
+                }
+            } else {
+                System.out.println("No args");
             }
 
             CommandExecutionEvent _event = new CommandExecutionEvent(message, command, message.getAuthor(), args);
             getClient().getDispatcher().dispatch(_event);
-        } catch (Exception ignore) {
+            System.out.println("Command Thrown: " + _event.getCommand());
+        } catch (Exception ex) {
+            ex.printStackTrace();
         }
     }
 }

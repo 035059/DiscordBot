@@ -11,14 +11,10 @@ import sx.blah.discord.util.MissingPermissionsException;
  */
 public final class Message {
 
-    public static void send(IDiscordClient client, IChannel channel, String message){
+    public static void run(IDiscordClient client, IChannel channel, String message){
         try {
             client.getChannelByID(channel.getID()).sendMessage(message);
-        } catch (MissingPermissionsException e) {
-            e.printStackTrace();
-        } catch (HTTP429Exception e) {
-            e.printStackTrace();
-        } catch (DiscordException e) {
+        } catch (MissingPermissionsException | HTTP429Exception | DiscordException e) {
             e.printStackTrace();
         }
     }
