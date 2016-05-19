@@ -1,6 +1,5 @@
 package main.java.commands;
 
-import main.java.Bot;
 import sx.blah.discord.handle.obj.IUser;
 import sx.blah.discord.util.DiscordException;
 
@@ -9,10 +8,10 @@ import sx.blah.discord.util.DiscordException;
  */
 public final class Delete {
 
-    private Delete(){};
+    private Delete(){}
 
     public static void run() throws DiscordException {
-        Bot.getDiscordClient()
+        //Bot.getDiscordClient()
     }
     
     public static void run(int numMessages){
