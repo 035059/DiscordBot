@@ -11,6 +11,8 @@ import sx.blah.discord.util.MissingPermissionsException;
  */
 public final class Message {
 
+    private Message(){}
+
     public static void run(IDiscordClient client, IChannel channel, String message){
         try {
             client.getChannelByID(channel.getID()).sendMessage(message);

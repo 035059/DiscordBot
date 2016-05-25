@@ -11,7 +11,9 @@ import java.io.File;
  */
 public final class Music {
 
-    public void playFile(IDiscordClient client, String channelID, String path) throws Exception {
+    private Music(){}
+
+    public void play(IDiscordClient client, String channelID, String path) throws Exception {
 
         AudioChannel channel = client.getVoiceChannelByID(channelID).getAudioChannel();
 
@@ -25,16 +27,37 @@ public final class Music {
 
         channel.queueFile(rawFile);
     }
-
-    public void pause(){
-
-    }
-
-    public void resume(){
-
-    }
-
-    public void stop(){
-
-    }
+//
+//    public void pause(){
+//
+//        // Interupts our bot's audio stream. It will
+//        // continue where it left off.
+//        channelID.pause();
+//        // ^ This guy's partner
+//        channel.isPaused();
+//
+//        // Resumes the bot's audio stream. Operates
+//        // well with the #pause() function
+//        channel.resume();
+//
+//        // Updates the volume at which this bot
+//        // plays audio. This can go pretty darn
+//        // high, so avoid killing anyone's ears.
+//        channel.setVolume(4);
+//        channel.setVolume(1000); // <-- Evil
+//
+//        // Jumps over the current playing file.
+//        // Like it was never even there!
+//        channel.skip();
+//    }
+//
+//    }
+//
+//    public void resume(){
+//
+//    }
+//
+//    public void stop(){
+//
+//    }
 }

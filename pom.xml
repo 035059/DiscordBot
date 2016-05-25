@@ -45,11 +45,18 @@
             <artifactId>slf4j-log4j12</artifactId>
             <version>${slf4jVersion}</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.github.Kaioru</groupId>
+            <artifactId>instructability</artifactId>
+            <version>${instructabilityVersion}</version>
+        </dependency>
     </dependencies>
 
     <properties>
         <slf4jVersion>1.7.5</slf4jVersion>
-        <Discord4jVersion>2.4.6</Discord4jVersion>
+        <Discord4jVersion>2.4.9</Discord4jVersion>
+        <instructabilityVersion>1.0.0</instructabilityVersion>
     </properties>
 
 </project>

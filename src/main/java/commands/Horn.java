@@ -1,21 +1,13 @@
 package main.java.commands;
 
-import sx.blah.discord.api.IDiscordClient;
-import sx.blah.discord.handle.obj.IChannel;
-
 /**
  * Created by Allin on 5/11/2016.
  */
 public final class Horn {
-    Horn(IDiscordClient client, IChannel channel){
 
-    }
+    private Horn(){}
 
-    public void play(String hornName) {
+    public void run(){}
 
-    }
-
-    public void random(){
-
-    }
+    public void run(String hornName) {}
 }

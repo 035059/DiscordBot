@@ -8,8 +8,10 @@ import java.util.Optional;
 public final class Filter {
     private Boolean enabled;
 
-    Filter(Boolean enabled, Optional<String> dict){
-        this.enabled = enabled;
+    private Filter(){}
+
+    public void run(Boolean enabled, Optional<String> dict){
+        enabled = enabled;
     }
 
     public void setEnabled(boolean enabled){
