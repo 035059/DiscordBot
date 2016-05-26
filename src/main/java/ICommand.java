@@ -1,11 +1,8 @@
 package main.java;
 
-import sx.blah.discord.handle.obj.IChannel;
 import sx.blah.discord.handle.obj.IMessage;
 
 public interface ICommand {
-
-	void handle(IChannel channel, String[] args);
 
 	String getName();
 

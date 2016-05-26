@@ -31,6 +31,8 @@ public class CommandListener implements IListener<MessageReceivedEvent> {
 						e.printStackTrace();
 					}
 				}
+
+				System.out.println("Command executed: " + command.getName());
 				command.handle(event.getMessage(), arguments);
 			} else {
 				try {
