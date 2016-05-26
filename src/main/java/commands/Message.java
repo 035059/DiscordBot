@@ -1,23 +1,25 @@
 package main.java.commands;
 
-import sx.blah.discord.api.IDiscordClient;
+import main.java.ICommand;
 import sx.blah.discord.handle.obj.IChannel;
-import sx.blah.discord.util.DiscordException;
-import sx.blah.discord.util.HTTP429Exception;
-import sx.blah.discord.util.MissingPermissionsException;
+import sx.blah.discord.handle.obj.IMessage;
 
 /**
  * Created by Allin on 5/12/2016.
  */
-public final class Message {
+public final class Message implements ICommand {
 
-    private Message(){}
+    @Override
+    public void handle(IChannel channel, String[] args) {
 
-    public static void run(IDiscordClient client, IChannel channel, String message){
-        try {
-            client.getChannelByID(channel.getID()).sendMessage(message);
-        } catch (MissingPermissionsException | HTTP429Exception | DiscordException e) {
-            e.printStackTrace();
-        }
+    }
+    @Override
+    public String getName() {
+        return "message";
+    }
+
+    @Override
+    public void handle(IMessage message, String[] args) {
+
     }
 }

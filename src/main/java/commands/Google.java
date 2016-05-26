@@ -1,14 +1,26 @@
 package main.java.commands;
 
+import main.java.ICommand;
+import sx.blah.discord.handle.obj.IChannel;
+import sx.blah.discord.handle.obj.IMessage;
+
 /**
  * Created by Allin on 5/11/2016.
  */
-public final class Google {
+public final class Google implements ICommand {
 
-    private Google() {
+    @Override
+    public void handle(IChannel channel, String[] args) {
+
     }
 
-    public static void run(String query, boolean FeelingLucky) {
+    @Override
+    public String getName() {
+        return "google";
+    }
+
+    @Override
+    public void handle(IMessage message, String[] args) {
 
     }
 }

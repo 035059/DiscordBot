@@ -40,5 +40,6 @@
     <orderEntry type="library" name="Maven: com.github.Kaioru:instructability:1.0.0" level="project" />
     <orderEntry type="library" name="Maven: com.github.Kaioru.instructability:instructability-core:1.0.0" level="project" />
     <orderEntry type="library" name="Maven: com.github.Kaioru.instructability:instructability-discord4j:1.0.0" level="project" />
+    <orderEntry type="library" name="Maven: com.darichey.generalCommands:generalsCommands:1.0-SNAPSHOT" level="project" />
   </component>
 </module>

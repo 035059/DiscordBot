@@ -51,12 +51,19 @@
             <artifactId>instructability</artifactId>
             <version>${instructabilityVersion}</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.darichey.generalCommands</groupId>
+            <artifactId>generalsCommands</artifactId>
+            <version>${generalCommandsVersion}</version>
+        </dependency>
     </dependencies>
 
     <properties>
         <slf4jVersion>1.7.5</slf4jVersion>
         <Discord4jVersion>2.4.9</Discord4jVersion>
         <instructabilityVersion>1.0.0</instructabilityVersion>
+        <generalCommandsVersion>1.0-SNAPSHOT</generalCommandsVersion>
     </properties>
 
 </project>

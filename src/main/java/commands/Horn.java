@@ -1,13 +1,26 @@
 package main.java.commands;
 
+import main.java.ICommand;
+import sx.blah.discord.handle.obj.IChannel;
+import sx.blah.discord.handle.obj.IMessage;
+
 /**
  * Created by Allin on 5/11/2016.
  */
-public final class Horn {
+public final class Horn implements ICommand {
 
-    private Horn(){}
+    @Override
+    public void handle(IChannel channel, String[] args) {
 
-    public void run(){}
+    }
 
-    public void run(String hornName) {}
+    @Override
+    public String getName() {
+        return "horn";
+    }
+
+    @Override
+    public void handle(IMessage message, String[] args) {
+
+    }
 }

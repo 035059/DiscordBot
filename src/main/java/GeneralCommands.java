@@ -1,7 +1,5 @@
 package main.java;
 
-import com.github.kaioru.instructability.Instructables;
-import com.github.kaioru.instructability.command.CommandRegistry;
 import main.java.commands.Commands;
 import sx.blah.discord.api.IDiscordClient;
 import sx.blah.discord.modules.IModule;
@@ -10,12 +8,20 @@ public class GeneralCommands implements IModule {
 
     public static IDiscordClient client;
 
-    public void enable(IDiscordClient discordClient) {
+    @Override
+    public boolean enable(IDiscordClient discordClient) {
         client = discordClient;
-        Instructables.getRegistry().registerCommand(Commands.alias);
-        Instructables.getRegistry().registerCommand(Commands.help);
-        Instructables.getRegistry().registerCommand(Commands.shrug);
-        Instructables.getRegistry().registerCommand(Commands.hype);
+        CommandRegistry.registerCommand(Commands.delete);
+        CommandRegistry.registerCommand(Commands.filter);
+        CommandRegistry.registerCommand(Commands.google);
+        CommandRegistry.registerCommand(Commands.horn);
+        CommandRegistry.registerCommand(Commands.lookup);
+        CommandRegistry.registerCommand(Commands.meme);
+        CommandRegistry.registerCommand(Commands.message);
+        CommandRegistry.registerCommand(Commands.music);
+        CommandRegistry.registerCommand(Commands.wolframalpha);
+        CommandRegistry.registerCommand(Commands.hype);
+        return true;
     }
 
     public void disable() {
@@ -23,39 +29,7 @@ public class GeneralCommands implements IModule {
     }
 
     public String getName() {
-        return "GeneralCommands";public class GeneralCommands implements IModule {
-
-            public static IDiscordClient client;
-
-            public void enable(IDiscordClient discordClient) {
-                client = discordClient;
-                Instructables.getRegistry().registerCommand(Commands.alias);
-                Instructables.getRegistry().registerCommand(Commands.help);
-                Instructables.getRegistry().registerCommand(Commands.shrug);
-                Instructables.getRegistry().registerCommand(Commands.hype);
-            }
-
-            public void disable() {
-
-            }
-
-            public String getName() {
-                return "GeneralCommands";
-            }
-
-            public String getVersion() {
-                return "1.0";
-            }
-
-            public String getAuthor() {
-                return "Panda";
-            }
-
-            public String getMinimumDiscord4JVersion() {
-                return "2.3.0";
-            }
-        }
-
+        return "GeneralCommands";
     }
 
     public String getVersion() {
@@ -63,7 +37,7 @@ public class GeneralCommands implements IModule {
     }
 
     public String getAuthor() {
-        return "Panda";
+        return "Allin Demopolis";
     }
 
     public String getMinimumDiscord4JVersion() {

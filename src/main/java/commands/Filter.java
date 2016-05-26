@@ -1,20 +1,26 @@
 package main.java.commands;
 
-import java.util.Optional;
+import main.java.ICommand;
+import sx.blah.discord.handle.obj.IChannel;
+import sx.blah.discord.handle.obj.IMessage;
 
 /**
  * Created by Allin on 5/11/2016.
  */
-public final class Filter {
-    private Boolean enabled;
+public final class Filter implements ICommand {
 
-    private Filter(){}
+    @Override
+    public void handle(IChannel channel, String[] args) {
 
-    public void run(Boolean enabled, Optional<String> dict){
-        enabled = enabled;
     }
 
-    public void setEnabled(boolean enabled){
-        this.enabled = enabled;
+    @Override
+    public String getName() {
+        return "filter";
+    }
+
+    @Override
+    public void handle(IMessage message, String[] args) {
+
     }
 }

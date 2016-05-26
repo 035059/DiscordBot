@@ -1,21 +1,26 @@
 package main.java.commands;
 
-import sx.blah.discord.api.IDiscordClient;
+import main.java.ICommand;
 import sx.blah.discord.handle.obj.IChannel;
-import sx.blah.discord.handle.obj.IUser;
+import sx.blah.discord.handle.obj.IMessage;
 
 /**
  * Created by Allin on 5/11/2016.
  */
-public final class Lookup {
+public final class Lookup implements ICommand {
 
-    private Lookup(){}
-
-    public static void run(IDiscordClient client, IChannel channel, String contents){
+    @Override
+    public void handle(IChannel channel, String[] args) {
 
     }
 
-    public static void run(IDiscordClient client, IChannel channel, IUser user){
+    @Override
+    public String getName() {
+        return "lookup";
+    }
+
+    @Override
+    public void handle(IMessage message, String[] args) {
 
     }
 }
