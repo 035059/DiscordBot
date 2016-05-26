@@ -5,6 +5,7 @@ import sx.blah.discord.api.IListener;
 import sx.blah.discord.handle.impl.events.MessageReceivedEvent;
 import sx.blah.discord.util.DiscordException;
 import sx.blah.discord.util.HTTP429Exception;
+import sx.blah.discord.util.MessageBuilder;
 import sx.blah.discord.util.MissingPermissionsException;
 
 public class CommandListener implements IListener<MessageReceivedEvent> {
@@ -30,10 +31,13 @@ public class CommandListener implements IListener<MessageReceivedEvent> {
 						e.printStackTrace();
 					}
 				}
-				Discord4J.LOGGER.info("Command " + commandName + " executed.");
 				command.handle(event.getMessage(), arguments);
 			} else {
-				Discord4J.LOGGER.warn("Command " + commandName + " not found.");
+				try {
+					new MessageBuilder(GeneralCommands.client).withChannel(event.getMessage().getChannel()).withContent("Command " + commandName + " not found.").build();
+				} catch (HTTP429Exception | MissingPermissionsException | DiscordException e) {
+					Discord4J.LOGGER.error("Command Not Found message error: ", e);
+				}
 			}
 		}
 	}
