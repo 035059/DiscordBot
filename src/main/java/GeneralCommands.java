@@ -21,6 +21,7 @@ public class GeneralCommands implements IModule {
         CommandRegistry.registerCommand(Commands.music);
         CommandRegistry.registerCommand(Commands.wolframalpha);
         CommandRegistry.registerCommand(Commands.hype);
+        CommandRegistry.registerCommand(Commands.help);
         return true;
     }
 

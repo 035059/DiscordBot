@@ -5,7 +5,7 @@ import sx.blah.discord.Discord4J;
 import java.util.HashMap;
 
 public class CommandRegistry {
-	private static HashMap<String, ICommand> commands = new HashMap<String, ICommand>();
+	private static HashMap<String, ICommand> commands = new HashMap<>();
 
 	public static HashMap<String, ICommand> getCommands() {
 		return commands;

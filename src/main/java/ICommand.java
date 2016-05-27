@@ -6,6 +6,8 @@ public interface ICommand {
 
 	String getName();
 
+    String getRole();
+
 	void handle(IMessage message, String[] args);
 
 	default String[] getAliases() {

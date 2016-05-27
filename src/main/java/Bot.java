@@ -24,7 +24,7 @@ public class Bot {
         return new ClientBuilder().withToken(token).login();
     }
 
-    public static IDiscordClient getDiscordClient() throws DiscordException {
+    public static IDiscordClient getDiscordClient() {
         return discordClient;
     }
 }

@@ -15,7 +15,17 @@ public final class Horn implements ICommand {
     }
 
     @Override
+    public String getRole() {
+        return null;
+    }
+
+    @Override
     public void handle(IMessage message, String[] args) {
 
+    }
+
+    @Override
+    public String toString(){
+        return this.getName() + ": " + this.getRole();
     }
 }

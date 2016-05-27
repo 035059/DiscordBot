@@ -1,5 +1,6 @@
 package main.java.commands;
 
+import main.java.Bot;
 import main.java.ICommand;
 import sx.blah.discord.handle.obj.IMessage;
 import sx.blah.discord.util.DiscordException;
@@ -18,35 +19,66 @@ public class Delete implements ICommand {
     }
 
     @Override
-    public void handle(IMessage message, String[] args) {
-        MessageList messages = message.getChannel().getMessages();
-        try {
-            for (int i = 0; i < Integer.valueOf(args[0]) + 1; i++) {
-                try {
-                    messages.get(i).delete();
-                } catch (MissingPermissionsException | HTTP429Exception | DiscordException e) {
-                    e.printStackTrace();
-                }
-            }
-        } catch (NumberFormatException e) {
-            int numSelected = 0;
-            int counter = 0;
-            while(numSelected < Integer.valueOf(args[1])){
-                if (messages.get(counter).getAuthor() == message.getAuthor()){
-                    try {
-                        messages.get(counter).delete();
-                    } catch (MissingPermissionsException | HTTP429Exception | DiscordException e1) {
-                        e1.printStackTrace();
-                    }
-                    numSelected++;
-                }
-                counter ++;
-            }
-        }
+    public String getRole() {
+        return null;
     }
 
     @Override
     public boolean deletesMessage() {
         return true;
+    }
+
+    @Override
+    public void handle(IMessage message, String[] args) {
+        MessageList messages = message.getChannel().getMessages();
+        if (args.length < 1){
+            try {
+                messages.get(1).delete();
+            } catch (MissingPermissionsException | HTTP429Exception | DiscordException e) {
+                e.printStackTrace();
+            }
+        } else {
+            try {
+                for (int i = 0; i < Integer.valueOf(args[0]) + 1; i++) {
+                    try {
+                        messages.get(i).delete();
+                    } catch (MissingPermissionsException | HTTP429Exception | DiscordException e) {
+                        e.printStackTrace();
+                    }
+                }
+            } catch (NumberFormatException e) {
+                if (args.length == 1) {
+                    for (IMessage iMessage : messages) {
+                        try {
+                            if (iMessage.getAuthor() == Bot.getDiscordClient().getUserByID(args[0])){
+                                iMessage.delete();
+                                break;
+                            }
+                        } catch (DiscordException | MissingPermissionsException | HTTP429Exception e1) {
+                            e1.printStackTrace();
+                        }
+                    }
+                } else {
+                    int numSelected = 0;
+                    int counter = 0;
+                    while (numSelected < Integer.valueOf(args[1])) {
+                        if (messages.get(counter).getAuthor() == Bot.getDiscordClient().getUserByID(args[0])) {
+                            try {
+                                messages.get(counter).delete();
+                            } catch (MissingPermissionsException | HTTP429Exception | DiscordException e1) {
+                                e1.printStackTrace();
+                            }
+                            numSelected++;
+                        }
+                        counter++;
+                    }
+                }
+            }
+        }
+    }
+
+    @Override
+    public String toString(){
+        return this.getName() + ": " + this.getRole();
     }
 }

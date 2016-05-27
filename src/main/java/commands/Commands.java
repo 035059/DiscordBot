@@ -13,4 +13,5 @@ public class Commands {
     public static final ICommand music = new Music();
     public static final ICommand wolframalpha = new WolframAlpha();
     public static final ICommand hype = new Hype();
+    public static final ICommand help = new Help();
 }

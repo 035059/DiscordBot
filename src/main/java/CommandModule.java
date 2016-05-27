@@ -26,7 +26,7 @@ public class CommandModule implements IModule {
 
 	@Override
 	public String getAuthor() {
-		return "Panda";
+		return "Allin Demopolis";
 	}
 
 	@Override

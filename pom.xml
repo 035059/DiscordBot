@@ -46,16 +46,24 @@
             <version>${slf4jVersion}</version>
         </dependency>
 
+        <!--
         <dependency>
             <groupId>com.github.Kaioru</groupId>
             <artifactId>instructability</artifactId>
             <version>${instructabilityVersion}</version>
         </dependency>
+        -->
 
         <dependency>
             <groupId>com.darichey.generalCommands</groupId>
             <artifactId>generalsCommands</artifactId>
             <version>${generalCommandsVersion}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.api-client</groupId>
+            <artifactId>google-api-client</artifactId>
+            <version>${googleAPIVersion}</version>
         </dependency>
     </dependencies>
 
@@ -64,6 +72,7 @@
         <Discord4jVersion>2.4.9</Discord4jVersion>
         <instructabilityVersion>1.0.0</instructabilityVersion>
         <generalCommandsVersion>1.0-SNAPSHOT</generalCommandsVersion>
+        <googleAPIVersion>1.19.1</googleAPIVersion>
     </properties>
 
 </project>
