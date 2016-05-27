@@ -20,7 +20,7 @@ public class Delete implements ICommand {
 
     @Override
     public String getRole() {
-        return null;
+        return "Deletes a number of messages, or a number of messages specific to a user";
     }
 
     @Override

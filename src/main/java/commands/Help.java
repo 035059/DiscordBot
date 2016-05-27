@@ -25,11 +25,16 @@ public final class Help implements ICommand {
 
     @Override
     public void handle(IMessage message, String[] args) {
+
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("Commands:\n");
+        for(ICommand s : CommandRegistry.getCommands().values()) {
+            stringBuilder.append(s.toString());
+            stringBuilder.append("\n");
+        }
+
         try {
-            new MessageBuilder(GeneralCommands.client).withChannel(message.getChannel()).withContent(
-                    "Commands:\n" +
-                            CommandRegistry.getCommands().values().toString()
-            ).build();
+            new MessageBuilder(GeneralCommands.client).withChannel(message.getChannel()).withContent(stringBuilder.toString()).build();
         } catch (HTTP429Exception | DiscordException | MissingPermissionsException e) {
             e.printStackTrace();
         }
