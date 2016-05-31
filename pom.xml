@@ -46,14 +46,6 @@
             <version>${slf4jVersion}</version>
         </dependency>
 
-        <!--
-        <dependency>
-            <groupId>com.github.Kaioru</groupId>
-            <artifactId>instructability</artifactId>
-            <version>${instructabilityVersion}</version>
-        </dependency>
-        -->
-
         <dependency>
             <groupId>com.darichey.generalCommands</groupId>
             <artifactId>generalsCommands</artifactId>
@@ -65,6 +57,12 @@
             <artifactId>google-api-client</artifactId>
             <version>${googleAPIVersion}</version>
         </dependency>
+
+        <dependency>
+            <groupId>at.mukprojects</groupId>
+            <artifactId>giphy4j</artifactId>
+            <version>${giphy4jVersion}</version>
+        </dependency>
     </dependencies>
 
     <properties>
@@ -73,6 +71,7 @@
         <instructabilityVersion>1.0.0</instructabilityVersion>
         <generalCommandsVersion>1.0-SNAPSHOT</generalCommandsVersion>
         <googleAPIVersion>1.19.1</googleAPIVersion>
+        <giphy4jVersion>1.0.1</giphy4jVersion>
     </properties>
 
 </project>

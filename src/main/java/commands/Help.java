@@ -27,9 +27,9 @@ public final class Help implements ICommand {
     public void handle(IMessage message, String[] args) {
 
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("Commands:\n");
+        stringBuilder.append("**List of commands:**\n");
         for(ICommand s : CommandRegistry.getCommands().values()) {
-            stringBuilder.append(s.toString());
+            stringBuilder.append("`" + s.getName() + "`: " + s.getRole());
             stringBuilder.append("\n");
         }
 

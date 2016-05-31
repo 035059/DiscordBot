@@ -22,7 +22,7 @@ public class Hype implements ICommand {
 
     @Override
     public String getRole() {
-        return null;
+        return "For when the train simply cannot be stopped";
     }
 
     @Override
