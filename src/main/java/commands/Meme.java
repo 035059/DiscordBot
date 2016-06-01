@@ -32,8 +32,18 @@ public final class Meme implements ICommand {
         try {
             new MessageBuilder(GeneralCommands.client).withChannel(message.getChannel()).withContent(giphy.searchRandom(String.join(" ", (CharSequence[]) args)).getData().getImageOriginalUrl()).build();
         } catch (GiphyException | DiscordException | MissingPermissionsException | HTTP429Exception e) {
-            e.printStackTrace();
+            try {
+                new MessageBuilder(GeneralCommands.client).withChannel(message.getChannel()).withContent("No gif found").build();
+            } catch (HTTP429Exception | DiscordException | MissingPermissionsException e1) {
+                e1.printStackTrace();
+            }
+
         }
+    }
+
+    @Override
+    public boolean deletesMessage() {
+        return true;
     }
 
     @Override
