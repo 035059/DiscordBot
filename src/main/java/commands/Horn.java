@@ -16,7 +16,7 @@ public final class Horn implements ICommand {
 
     @Override
     public String getRole() {
-        return null;
+        return "plays a quick audio file";
     }
 
     @Override

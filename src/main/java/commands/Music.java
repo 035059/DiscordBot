@@ -26,7 +26,7 @@ public final class Music implements ICommand {
 
     @Override
     public String getRole() {
-        return null;
+        return "plays a youtube or media audio file";
     }
 
     @Override
@@ -57,9 +57,7 @@ public final class Music implements ICommand {
 
         } else if (args[0].toLowerCase().equals("stop")) {
             System.out.println("stop");
-            IVoiceChannel channel = GeneralCommands.client.getVoiceChannels().stream().filter(voiceChannel -> voiceChannel.getName().equalsIgnoreCase(args[1])).findFirst().orElse(null);
             AudioPlayer.getAudioPlayerForGuild(message.getGuild()).clean();
-            channel.leave();
 
         } else if (args[0].toLowerCase().equals("connectedto")) {
             try {

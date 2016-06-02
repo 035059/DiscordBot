@@ -20,7 +20,7 @@ public final class Help implements ICommand {
 
     @Override
     public String getRole() {
-        return null;
+        return "posts a message with help for each function";
     }
 
     @Override
