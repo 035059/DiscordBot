@@ -19,16 +19,29 @@ import java.util.Arrays;
  */
 public final class Music implements ICommand {
 
+    /**
+     * Gets the name of the command
+     * @return
+     */
     @Override
     public String getName() {
         return "music";
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String getRole() {
         return "plays a youtube or media audio file";
     }
 
+    /**
+     *
+     * @param message
+     * @param args
+     */
     @Override
     public void handle(IMessage message, String[] args) {
         if (args[0].toLowerCase().equals("play") || args[0].equals("queue")) {

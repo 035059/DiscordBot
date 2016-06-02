@@ -13,21 +13,38 @@ import sx.blah.discord.util.MissingPermissionsException;
  */
 public class Delete implements ICommand {
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String getName() {
         return "delete";
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String getRole() {
         return "Deletes a number of messages, or a number of messages specific to a user";
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public boolean deletesMessage() {
         return true;
     }
 
+    /**
+     * Deletes n messages from a user, or channel
+     * @param message the message from the event that triggered this command
+     * @param args the space separated values that followed the command
+     */
     @Override
     public void handle(IMessage message, String[] args) {
         MessageList messages = message.getChannel().getMessages();

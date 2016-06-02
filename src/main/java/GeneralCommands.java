@@ -9,8 +9,9 @@ public class GeneralCommands implements IModule {
     public static IDiscordClient client;
 
     /**
+     * Adds all the commands to the command registry
      * @param discordClient the currently connected client
-     * @return true when all commands have3 been added to the registry
+     * @return true when all commands have been added to the registry
      */
     @Override
     public boolean enable(IDiscordClient discordClient) {
@@ -28,22 +29,42 @@ public class GeneralCommands implements IModule {
         return true;
     }
 
+    /**
+     * Disables the bot
+     */
+    @Override
     public void disable() {
 
     }
 
+    /**
+     * Gets the name of this Module
+     * @return a string of the name
+     */
     public String getName() {
         return "GeneralCommands";
     }
 
+    /**
+     * Gets the version number of this Module
+     * @return a string of the version
+     */
     public String getVersion() {
         return "1.0";
     }
 
+    /**
+     * Gets the name of the author
+     * @return a string of the author's name
+     */
     public String getAuthor() {
         return "Allin Demopolis";
     }
 
+    /**
+     * Gets the name of the minimum version of the API this module supports
+     * @return a string of the minimum version
+     */
     public String getMinimumDiscord4JVersion() {
         return "2.3.0";
     }
