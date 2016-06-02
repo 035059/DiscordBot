@@ -4,6 +4,8 @@ import sx.blah.discord.api.ClientBuilder;
 import sx.blah.discord.api.IDiscordClient;
 import sx.blah.discord.util.DiscordException;
 
+import java.util.Optional;
+
 
 public class Bot {
     public static IDiscordClient discordClient;
@@ -18,6 +20,11 @@ public class Bot {
 
         discordClient.getModuleLoader().loadModule(new GeneralCommands());
         discordClient.getModuleLoader().loadModule(new CommandModule());
+
+        while (!discordClient.isReady()){
+            Thread.sleep(100);
+        }
+        discordClient.updatePresence(true, Optional.of("Discord4j"));
     }
 
     public static IDiscordClient login(String token) throws DiscordException {
