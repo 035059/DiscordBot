@@ -8,7 +8,9 @@ import sx.blah.discord.util.DiscordException;
 import sx.blah.discord.util.HTTP429Exception;
 import sx.blah.discord.util.MessageBuilder;
 import sx.blah.discord.util.MissingPermissionsException;
+import sx.blah.discord.util.audio.AudioPlayer;
 
+import java.net.URL;
 import java.util.Arrays;
 
 
@@ -33,50 +35,32 @@ public final class Music implements ICommand {
             System.out.println("play/queue");
             try {
                 IVoiceChannel channel = GeneralCommands.client.getVoiceChannels().stream().filter(voiceChannel -> voiceChannel.getName().equalsIgnoreCase(args[1])).findFirst().orElse(null);
-                if (channel != null) {
-                    System.out.println(channel.getName());
+                if (channel != null && !channel.isConnected())
                     channel.join();
-                    channel.getAudioChannel().queueUrl(args[2]);
+
+                URL url;
+
+                if (args[2].toLowerCase().contains("youtube")){
+                    Process process = new ProcessBuilder("C:\\Users\\Allin\\IdeaProjects\\DiscordBotGit\\src\\main\\resources\\youtube-dl.exe",args[2],"--skip-download","-g").start();
+                    url = new URL(process.getOutputStream().toString());
+                } else {
+                    url = new URL(args[2]);
                 }
+
+                AudioPlayer.getAudioPlayerForGuild(message.getGuild()).queue(url);
             } catch (Exception e) {
                 e.printStackTrace();
             }
         } else if (args[0].toLowerCase().equals("pause") || args[0].toLowerCase().equals("resume")) {
-            System.out.println("resume");;
-            try {
-                IVoiceChannel channel = GeneralCommands.client.getVoiceChannels().stream().filter(voiceChannel -> voiceChannel.getName().equalsIgnoreCase(args[1]) && !voiceChannel.isConnected()).findFirst().orElse(null);
-                if (channel != null) {
-                    if (!channel.getAudioChannel().isPaused())
-                        channel.getAudioChannel().pause();
-                    else
-                        channel.getAudioChannel().resume();
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            System.out.println("resume");
+            AudioPlayer.getAudioPlayerForGuild(message.getGuild()).setPaused(!AudioPlayer.getAudioPlayerForGuild(message.getGuild()).isPaused());
+
         } else if (args[0].toLowerCase().equals("stop")) {
             System.out.println("stop");
-            if (args.length > 2) {
-                try {
-                    IVoiceChannel channel = GeneralCommands.client.getVoiceChannels().stream().filter(voiceChannel -> voiceChannel.getName().equalsIgnoreCase(args[1]) && !voiceChannel.isConnected()).findFirst().orElse(null);
-                    if (channel != null) {
-                        channel.getAudioChannel().clearQueue();
-                        channel.leave();
-                    }
+            IVoiceChannel channel = GeneralCommands.client.getVoiceChannels().stream().filter(voiceChannel -> voiceChannel.getName().equalsIgnoreCase(args[1])).findFirst().orElse(null);
+            AudioPlayer.getAudioPlayerForGuild(message.getGuild()).clean();
+            channel.leave();
 
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            } else {
-                try {
-                    for (IVoiceChannel channel : GeneralCommands.client.getConnectedVoiceChannels()) {
-                        channel.getAudioChannel().clearQueue();
-                        channel.leave();
-                    }
-                } catch (Exception e){
-                    e.printStackTrace();
-                }
-            }
         } else if (args[0].toLowerCase().equals("connectedto")) {
             try {
                 new MessageBuilder(GeneralCommands.client).withChannel(message.getChannel()).withContent(Arrays.toString(GeneralCommands.client.getConnectedVoiceChannels().toArray())).build();
