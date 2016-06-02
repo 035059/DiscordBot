@@ -47,7 +47,7 @@ public final class Meme implements ICommand {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return this.getName() + ": " + this.getRole();
     }
 }

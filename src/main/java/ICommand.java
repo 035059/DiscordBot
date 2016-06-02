@@ -4,15 +4,18 @@ import sx.blah.discord.handle.obj.IMessage;
 
 public interface ICommand {
 
-	String getName();
+
+    String getName();
 
     String getRole();
 
-	void handle(IMessage message, String[] args);
+    void handle(IMessage message, String[] args);
 
-	default String[] getAliases() {
-		return new String[0];
-	}
+    default String[] getAliases() {
+        return new String[0];
+    }
 
-	default boolean deletesMessage() { return false; }
+    default boolean deletesMessage() {
+        return false;
+    }
 }

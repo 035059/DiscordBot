@@ -25,7 +25,7 @@ public final class Filter implements ICommand {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return this.getName() + ": " + this.getRole();
     }
 }

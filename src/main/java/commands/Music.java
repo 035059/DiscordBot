@@ -31,7 +31,7 @@ public final class Music implements ICommand {
 
     @Override
     public void handle(IMessage message, String[] args) {
-        if (args[0].toLowerCase().equals("play") || args[0].equals("queue")){
+        if (args[0].toLowerCase().equals("play") || args[0].equals("queue")) {
             System.out.println("play/queue");
             try {
                 IVoiceChannel channel = GeneralCommands.client.getVoiceChannels().stream().filter(voiceChannel -> voiceChannel.getName().equalsIgnoreCase(args[1])).findFirst().orElse(null);
@@ -40,8 +40,8 @@ public final class Music implements ICommand {
 
                 URL url;
 
-                if (args[2].toLowerCase().contains("youtube")){
-                    Process process = new ProcessBuilder("C:\\Users\\Allin\\IdeaProjects\\DiscordBotGit\\src\\main\\resources\\youtube-dl.exe",args[2],"--skip-download","-g").start();
+                if (args[2].toLowerCase().contains("youtube")) {
+                    Process process = new ProcessBuilder("C:\\Users\\Allin\\IdeaProjects\\DiscordBotGit\\src\\main\\resources\\youtube-dl.exe", args[2], "--skip-download", "-g").start();
                     url = new URL(process.getOutputStream().toString());
                 } else {
                     url = new URL(args[2]);
@@ -69,7 +69,7 @@ public final class Music implements ICommand {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return this.getName() + ": " + this.getRole();
     }
 }

@@ -8,6 +8,10 @@ public class GeneralCommands implements IModule {
 
     public static IDiscordClient client;
 
+    /**
+     * @param discordClient the currently connected client
+     * @return true when all commands have3 been added to the registry
+     */
     @Override
     public boolean enable(IDiscordClient discordClient) {
         client = discordClient;

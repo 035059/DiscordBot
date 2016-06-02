@@ -28,7 +28,7 @@ public final class Help implements ICommand {
 
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("**List of commands:**\n");
-        for(ICommand s : CommandRegistry.getCommands().values()) {
+        for (ICommand s : CommandRegistry.getCommands().values()) {
             stringBuilder.append("`" + s.getName() + "`: " + s.getRole());
             stringBuilder.append("\n");
         }
@@ -41,7 +41,7 @@ public final class Help implements ICommand {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return this.getName() + ": " + this.getRole();
     }
 }

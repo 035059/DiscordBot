@@ -30,7 +30,7 @@ public final class Google implements ICommand {
 
     @Override
     public void handle(IMessage message, String[] args) {
-        if (Objects.equals(args[0], "LUCKY")){
+        if (Objects.equals(args[0], "LUCKY")) {
             try {
                 args[0] = "";
                 new MessageBuilder(GeneralCommands.client).withChannel(message.getChannel()).withContent(String.valueOf(new URL("http://www.google.com/search?q=" + Arrays.toString(args).replaceAll("\\[|\\]|,", "").replaceAll(" ", "+").substring(1) + "&btnI"))).build();
@@ -47,7 +47,7 @@ public final class Google implements ICommand {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return this.getName() + ": " + this.getRole();
     }
 }

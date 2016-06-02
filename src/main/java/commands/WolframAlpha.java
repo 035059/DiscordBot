@@ -24,7 +24,7 @@ public final class WolframAlpha implements ICommand {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return this.getName() + ": " + this.getRole();
     }
 }

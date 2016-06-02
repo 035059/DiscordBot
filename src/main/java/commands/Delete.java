@@ -31,7 +31,7 @@ public class Delete implements ICommand {
     @Override
     public void handle(IMessage message, String[] args) {
         MessageList messages = message.getChannel().getMessages();
-        if (args.length < 1){
+        if (args.length < 1) {
             try {
                 messages.get(1).delete();
             } catch (MissingPermissionsException | HTTP429Exception | DiscordException e) {
@@ -50,7 +50,7 @@ public class Delete implements ICommand {
                 if (args.length == 1) {
                     for (IMessage iMessage : messages) {
                         try {
-                            if (iMessage.getAuthor() == Bot.getDiscordClient().getUserByID(args[0])){
+                            if (iMessage.getAuthor() == Bot.getDiscordClient().getUserByID(args[0])) {
                                 iMessage.delete();
                                 break;
                             }
@@ -78,7 +78,7 @@ public class Delete implements ICommand {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return this.getName() + ": " + this.getRole();
     }
 }
