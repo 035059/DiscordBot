@@ -7,6 +7,8 @@ import sx.blah.discord.handle.obj.IVoiceChannel;
 import sx.blah.discord.util.MessageBuilder;
 import sx.blah.discord.util.audio.AudioPlayer;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.net.URL;
 
 
@@ -50,8 +52,22 @@ public final class Music implements ICommand {
                 URL url;
 
                 if (args[2].toLowerCase().contains("youtube")) {
-                    Process process = new ProcessBuilder("C:\\Users\\Allin\\IdeaProjects\\DiscordBotGit\\src\\main\\resources\\youtube-dl.exe", args[2], "--skip-download", "-g").start();
-                    url = new URL(process.getOutputStream().toString());
+                    ProcessBuilder processBuilder = new ProcessBuilder("C:\\Users\\Allin\\IdeaProjects\\DiscordBotGit\\src\\main\\resources\\youtube-dl.exe", args[2], "--skip-download", "-g");
+                    processBuilder.redirectOutput();
+                    Process process = processBuilder.start();
+
+                    BufferedReader reader =
+                            new BufferedReader(new InputStreamReader(process.getInputStream()));
+                    StringBuilder builder = new StringBuilder();
+                    String line = null;
+                    while ( (line = reader.readLine()) != null) {
+                        builder.append(line);
+                        builder.append(System.getProperty("line.separator"));
+                    }
+                    String result = builder.toString();
+                    url = new URL(result);
+                    System.out.println(url);
+
                 } else {
                     url = new URL(args[2]);
                 }
