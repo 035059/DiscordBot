@@ -57,9 +57,9 @@ public final class Horn implements ICommand {
                 }
                 file = null;
             } else {
-                System.out.println(Arrays.toString(args).substring(0, args.length-1).replaceAll("\\]", "").replaceAll("\\[", ""));
+                System.out.println(Arrays.toString(args).replaceAll("\\]", "").replaceAll("\\[", "").replaceAll(",", ""));
                 for (File file1 : files) {
-                    if (file1.getName().toLowerCase().contains(Arrays.toString(args).substring(1, args.length-1).replaceAll("\\]", "").replaceAll("\\[", "")))
+                    if (file1.getName().toLowerCase().contains(Arrays.toString(args).replaceAll("\\]", "").replaceAll("\\[", "").replaceAll(",", "")))
                         file = file1;
                 }
             }
