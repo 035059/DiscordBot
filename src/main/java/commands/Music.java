@@ -4,14 +4,10 @@ import main.java.GeneralCommands;
 import main.java.ICommand;
 import sx.blah.discord.handle.obj.IMessage;
 import sx.blah.discord.handle.obj.IVoiceChannel;
-import sx.blah.discord.util.DiscordException;
-import sx.blah.discord.util.HTTP429Exception;
 import sx.blah.discord.util.MessageBuilder;
-import sx.blah.discord.util.MissingPermissionsException;
 import sx.blah.discord.util.audio.AudioPlayer;
 
 import java.net.URL;
-import java.util.Arrays;
 
 
 /**
@@ -63,6 +59,7 @@ public final class Music implements ICommand {
                 AudioPlayer.getAudioPlayerForGuild(message.getGuild()).queue(url);
             } catch (Exception e) {
                 e.printStackTrace();
+                new MessageBuilder(GeneralCommands.client).withChannel(message.getChannel()).withContent("Invalid URL");
             }
         } else if (args[0].toLowerCase().equals("pause") || args[0].toLowerCase().equals("resume")) {
             System.out.println("resume");
@@ -71,13 +68,6 @@ public final class Music implements ICommand {
         } else if (args[0].toLowerCase().equals("stop")) {
             System.out.println("stop");
             AudioPlayer.getAudioPlayerForGuild(message.getGuild()).clean();
-
-        } else if (args[0].toLowerCase().equals("connectedto")) {
-            try {
-                new MessageBuilder(GeneralCommands.client).withChannel(message.getChannel()).withContent(Arrays.toString(GeneralCommands.client.getConnectedVoiceChannels().toArray())).build();
-            } catch (HTTP429Exception | DiscordException | MissingPermissionsException e) {
-                e.printStackTrace();
-            }
         }
     }
 
