@@ -14,8 +14,8 @@ import sx.blah.discord.util.MissingPermissionsException;
 public class Delete implements ICommand {
 
     /**
-     *
-     * @return
+     * Gets the name of the command
+     * @return the name of the command
      */
     @Override
     public String getName() {
@@ -23,8 +23,8 @@ public class Delete implements ICommand {
     }
 
     /**
-     *
-     * @return
+     * Gets the role of the command
+     * @return the role of the command
      */
     @Override
     public String getRole() {
@@ -32,8 +32,8 @@ public class Delete implements ICommand {
     }
 
     /**
-     *
-     * @return
+     * Gets whether or not the triggering message is deleted
+     * @return whether or not the triggering message is deleted
      */
     @Override
     public boolean deletesMessage() {
@@ -47,53 +47,58 @@ public class Delete implements ICommand {
      */
     @Override
     public void handle(IMessage message, String[] args) {
-        MessageList messages = message.getChannel().getMessages();
-        if (args.length < 1) {
+        MessageList messages = message.getChannel().getMessages(); // Get a list of messages in the channel
+        if (args.length < 1) { // If there are no args
             try {
-                messages.get(1).delete();
+                messages.get(1).delete(); // Delete the last message in the channel
             } catch (MissingPermissionsException | HTTP429Exception | DiscordException e) {
                 e.printStackTrace();
             }
-        } else {
+        } else { // If there are args
             try {
-                for (int i = 0; i < Integer.valueOf(args[0]) + 1; i++) {
+                for (int i = 0; i < Integer.valueOf(args[0]) + 1; i++) { // Try to get args[0] as an integer, and if it works, iterate for that number
                     try {
-                        messages.get(i).delete();
+                        messages.get(i).delete(); // Delete the message at the i index
                     } catch (MissingPermissionsException | HTTP429Exception | DiscordException e) {
                         e.printStackTrace();
                     }
                 }
-            } catch (NumberFormatException e) {
-                if (args.length == 1) {
-                    for (IMessage iMessage : messages) {
+            } catch (NumberFormatException e) { // If args[0] is not a number
+                if (args.length == 1) { // If there is one argument
+                    for (IMessage iMessage : messages) { // For each message in the channel
                         try {
-                            if (iMessage.getAuthor() == Bot.getDiscordClient().getUserByID(args[0])) {
-                                iMessage.delete();
-                                break;
+                            if (iMessage.getAuthor() == Bot.getDiscordClient().getUserByID(args[0])) { // If the message is by the same author as the trigger
+                                iMessage.delete(); // Delete it
+                                break; //  Break out of the loop
                             }
                         } catch (DiscordException | MissingPermissionsException | HTTP429Exception e1) {
                             e1.printStackTrace();
                         }
                     }
-                } else {
-                    int numSelected = 0;
+                } else { // If there is more than one argument
+                    int numDeleted = 0;
                     int counter = 0;
-                    while (numSelected < Integer.valueOf(args[1])) {
-                        if (messages.get(counter).getAuthor() == Bot.getDiscordClient().getUserByID(args[0])) {
+
+                    while (numDeleted < Integer.valueOf(args[1])) { // While the number of deleted messages is less than args[1]
+                        if (messages.get(counter).getAuthor() == Bot.getDiscordClient().getUserByID(args[0])) { // If the message at index counter has the same author as the trigger
                             try {
-                                messages.get(counter).delete();
+                                messages.get(counter).delete(); // Delete the message
                             } catch (MissingPermissionsException | HTTP429Exception | DiscordException e1) {
                                 e1.printStackTrace();
                             }
-                            numSelected++;
+                            numDeleted++; // Increment the counter
                         }
-                        counter++;
+                        counter++; // Increment the counter
                     }
                 }
             }
         }
     }
 
+    /**
+     * Gets the name and role of the command
+     * @return the name and role of the command
+     */
     @Override
     public String toString() {
         return this.getName() + ": " + this.getRole();
