@@ -6,6 +6,7 @@ import sx.blah.discord.modules.IModule;
 public class CommandModule implements IModule {
 
     /**
+     * Enables the module
      * @param client the currently connected client
      * @return true, when a new CommandListener instance had been registered as a listener
      */
@@ -16,14 +17,15 @@ public class CommandModule implements IModule {
     }
 
     /**
-     * @
+     * Disables the module
      */
     @Override
     public void disable() {
     }
 
     /**
-     * @return
+     * Gets the name of the module
+     * @return the name of the module
      */
     @Override
     public String getName() {
@@ -31,7 +33,8 @@ public class CommandModule implements IModule {
     }
 
     /**
-     * @return
+     * Gets the version number
+     * @return the versiuon number
      */
     @Override
     public String getVersion() {
@@ -39,7 +42,8 @@ public class CommandModule implements IModule {
     }
 
     /**
-     * @return
+     * Gets the author's name
+     * @return the author's name
      */
     @Override
     public String getAuthor() {
@@ -47,7 +51,8 @@ public class CommandModule implements IModule {
     }
 
     /**
-     * @return
+     * Gets the minimum Discord4j verizon this module can be used with
+     * @return the minimum Discord4j verizon this module can be used with
      */
     @Override
     public String getMinimumDiscord4JVersion() {
