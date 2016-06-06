@@ -33,7 +33,7 @@ public class Hype implements ICommand {
         return "For when the train simply cannot be stopped";
     }
 
-    /**\
+    /**
      * Gets whether or not the triggering message is deleted
      * @return whether or not the triggering message is deleted
      */

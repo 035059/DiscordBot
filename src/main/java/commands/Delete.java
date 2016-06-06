@@ -48,6 +48,7 @@ public class Delete implements ICommand {
     @Override
     public void handle(IMessage message, String[] args) {
         MessageList messages = message.getChannel().getMessages(); // Get a list of messages in the channel
+        //if (message.getAuthor().getRolesForGuild(message.getGuild()).contains(message.getGuild().getRoleByID()))
         if (args.length < 1) { // If there are no args
             try {
                 messages.get(1).delete(); // Delete the last message in the channel

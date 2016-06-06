@@ -19,7 +19,7 @@ public final class Music implements ICommand {
 
     /**
      * Gets the name of the command
-     * @return
+     * @return the name of the command
      */
     @Override
     public String getName() {
@@ -27,8 +27,8 @@ public final class Music implements ICommand {
     }
 
     /**
-     *
-     * @return
+     * Gets the role of the command
+     * @return the role of the command
      */
     @Override
     public String getRole() {
@@ -36,57 +36,64 @@ public final class Music implements ICommand {
     }
 
     /**
-     *
+     * Plays music to a voice channel
      * @param message
      * @param args
      */
     @Override
     public void handle(IMessage message, String[] args) {
-        if (args[0].toLowerCase().equals("play") || args[0].equals("queue")) {
-            System.out.println("play/queue");
+        if (args[0].toLowerCase().equals("play") || args[0].equals("queue")) { // If the command is to play a new song
+            System.out.println("play/queue"); // Print that to the console
             try {
+                // Get a channel object from args[1]
                 IVoiceChannel channel = GeneralCommands.client.getVoiceChannels().stream().filter(voiceChannel -> voiceChannel.getName().equalsIgnoreCase(args[1])).findFirst().orElse(null);
-                if (channel != null && !channel.isConnected())
-                    channel.join();
+                if (channel != null && !channel.isConnected()) // If the channel exists and we are not connected
+                    channel.join(); // connect
 
                 URL url;
 
-                if (args[2].toLowerCase().contains("youtube")) {
+                if (args[2].toLowerCase().contains("youtube")) { // If the link is to a youtube video
+                    // Create a new process to run the youtube-dl executable, with flags to not download the file, and return an accessible url
                     ProcessBuilder processBuilder = new ProcessBuilder("C:\\Users\\Allin\\IdeaProjects\\DiscordBotGit\\src\\main\\resources\\youtube-dl.exe", args[2], "--skip-download", "-g");
-                    processBuilder.redirectOutput();
-                    Process process = processBuilder.start();
+                    processBuilder.redirectOutput(); // Catch the output
+                    Process process = processBuilder.start(); // Start the process
 
-                    BufferedReader reader =
-                            new BufferedReader(new InputStreamReader(process.getInputStream()));
+                    // Create a BufferedReader to catch the output, and a StringBuilder to organise it
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
                     StringBuilder builder = new StringBuilder();
                     String line = null;
-                    while ( (line = reader.readLine()) != null) {
-                        builder.append(line);
-                        builder.append(System.getProperty("line.separator"));
+                    while ( (line = reader.readLine()) != null) { // While the next line from the buffered reader is not null
+                        builder.append(line); // Append the line
+                        builder.append(System.getProperty("line.separator")); // Append a line separator
                     }
-                    String result = builder.toString();
-                    url = new URL(result);
-                    System.out.println(url);
+                    url = new URL(builder.toString()); // Assign the URL to be played to the accessible youtube URL
+                    System.out.println(url); // Print the URL to the console
 
-                } else {
-                    url = new URL(args[2]);
+                } else { // If the URL is not from youtube
+                    url = new URL(args[2]); // Set it to args[2]
                 }
-
+                // Queue the URL
                 AudioPlayer.getAudioPlayerForGuild(message.getGuild()).queue(url);
-            } catch (Exception e) {
+            } catch (Exception e) { // If the URL is invalid
                 e.printStackTrace();
+                // Tell the user in the chat
                 new MessageBuilder(GeneralCommands.client).withChannel(message.getChannel()).withContent("Invalid URL");
             }
-        } else if (args[0].toLowerCase().equals("pause") || args[0].toLowerCase().equals("resume")) {
-            System.out.println("resume");
+        } else if (args[0].toLowerCase().equals("pause") || args[0].toLowerCase().equals("resume")) { // If the command is to pause or resume
+            System.out.println("pause/resume");
+            // Toggle the paused state
             AudioPlayer.getAudioPlayerForGuild(message.getGuild()).setPaused(!AudioPlayer.getAudioPlayerForGuild(message.getGuild()).isPaused());
 
-        } else if (args[0].toLowerCase().equals("stop")) {
-            System.out.println("stop");
-            AudioPlayer.getAudioPlayerForGuild(message.getGuild()).clean();
+        } else if (args[0].toLowerCase().equals("stop")) { // If the command is to stop
+            System.out.println("stop"); // Print it to the console
+            AudioPlayer.getAudioPlayerForGuild(message.getGuild()).clean(); // Clear the queue
         }
     }
 
+    /**
+     * Gets the name and role of the command
+     * @return the name and role of the command
+     */
     @Override
     public String toString() {
         return this.getName() + ": " + this.getRole();
